@@ -1,0 +1,9 @@
+pip
+pyodbc
+SQLAlchemy
+fastapi[all]
+uvicorn[standard]
+gunicorn
+sklearn
+scikit-learn
+#pytorch==2.0.1
