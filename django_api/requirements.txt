@@ -1,0 +1,2 @@
+peft==0.10.0
+confluent_kafka==2.4.0
