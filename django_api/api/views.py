@@ -20,11 +20,7 @@ import pandas as pd
 
 from datetime import datetime, date
 #from asgiref.sync import async_to_sync
-
-#from api.components.score_cobranzas_prediction import score_cobranzas_get_data_and_predict
-from api.models.score_cobranzas_prediction import Score_Cobranzas_Prediction
-
-from api.components.ganaBert import DistillBERTClass
+from api.components.nlp_huggingFace import DistillBERTClass
 import asyncio
 import logging
 # Setting up logging
@@ -46,7 +42,7 @@ def index_page(request):
 @api_view(["POST"])
 #@authentication_classes([SessionAuthentication, TokenAuthentication])
 @permission_classes([IsAuthenticated])
-def prediction_ganabert(request):
+def prediction_nlp_huggingFace(request):
     try:
         comentario = request.data.get("comentario",None)
         #fields = [comentario,otroEj]
@@ -70,7 +66,7 @@ def prediction_ganabert(request):
             }
             return Response(predictions, status=406)
     except Exception as e:
-        logging.error('Error predicting ./views/prediction_ganabert: %s', e)
+        logging.error('Error predicting ./views/nlp_huggingFace: %s', e)
         predictions = {
             'error' : '2',
             "message": str(e)
@@ -81,14 +77,14 @@ def prediction_ganabert(request):
 
 @api_view(["POST"])
 @permission_classes([IsAuthenticated])
-def prediction_score_cobranzas(request):
+def prediction_default_credit_risk(request):
     try:
-        score_cobranzas = Score_Cobranzas_Prediction() 
-        score_cobranzas.score_cobranzas_get_data_and_predict()
-        logging.info(f'Response score_cobranzas sucessfully sended')
-        return Response({'message': 'score_cobranzas successfully processed'},  status=200)
+        default_credit_risk_pred = default_credit_risk() 
+        default_credit_risk_pred.default_credit_risk()
+        logging.info(f'Response default_credit_risk sucessfully sended')
+        return Response({'message': 'default_credit_risk successfully processed'},  status=200)
     except Exception as e:
-        logging.error('Error predicting ./views/prediction_score_cobranzas: %s', e)
+        logging.error('Error predicting ./views/default_credit_risk: %s', e)
         predictions = {
             'error' : '2',
             "message": str(e)

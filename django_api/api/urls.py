@@ -9,7 +9,7 @@ app_name = 'api'
 
 urlpatterns = [
     path('',views.index_page, name='index_page'),
-    path('score_cobranzas/', views.prediction_score_cobranzas, name='score_cobranzas'),
-    path('ganabert/', views.prediction_ganabert , name='prediction_ganabert')
+    path('default_credit_risk/', views.default_credit_risk, name='default_credit_risk'),
+    path('nlp_huggingFace/', views.nlp_huggingFace , name='nlp_huggingFace')
 ]
 

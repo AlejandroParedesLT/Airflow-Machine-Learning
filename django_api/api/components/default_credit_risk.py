@@ -18,7 +18,7 @@ from sklearn.preprocessing import StandardScaler, normalize
 import joblib
 
 
-class score_cobranzas():
+class default_credit_risk():
     def __init__(self
                  , input_date
                  , df_DEMOGRAFICO
@@ -199,7 +199,7 @@ class score_cobranzas():
         df_snapshot = df_snapshot.drop(['NUMEROPERSONA', 'numerodocumento'], axis=1).replace(np.nan, 0)
         df_snapshot.columns = df_snapshot.columns.astype(str).str.replace(" ", "_")
 
-        model = joblib.load('./ml_model/score_cobranzas/score_cobranzas_brf.joblib')
+        model = joblib.load('./ml_model/default_credit_risk/default_credit_risk.joblib')
 
         f_names = model.feature_names_in_
         y_pred = model.predict(self.standarized_df(df_snapshot[f_names]))
