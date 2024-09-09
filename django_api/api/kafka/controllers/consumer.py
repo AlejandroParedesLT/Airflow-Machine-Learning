@@ -1,7 +1,7 @@
 import os
 import logging
 from confluent_kafka import Consumer, KafkaException, KafkaError
-from ..models.estado_atm import Estado_ATM as atm
+from ..models import Estado_ATM as atm
 
 log_file = './mlapi_logs.log'
 logging.basicConfig(filename=log_file, level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')

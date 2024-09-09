@@ -4,7 +4,7 @@ import multiprocessing
 import asyncio
 from django.core.wsgi import get_wsgi_application
 from .init_kafka import InitKafka
-from api.kafka.controllers.consumer_estado_atm import TopicConsumer_ATM
+from django_api.api.kafka.controllers.consumer import TopicConsumer_ATM
 from api.kafka.controllers.consumer_estado_atm2 import TopicConsumer_ATM2
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'model_deploy.settings')
